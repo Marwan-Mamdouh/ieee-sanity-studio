@@ -25,6 +25,49 @@ export const event = defineType({
       validation: (Rule) => Rule.required().max(255),
     }),
     defineField({
+      name: 'speakers',
+      title: 'speakers',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              validation: (Rule) => Rule.required().max(255),
+            }),
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+              validation: (Rule) => Rule.required().max(255),
+            }),
+            defineField({name: 'photo', type: 'image', title: 'Photo', options: {hotspot: true}}),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'memories',
+      title: 'Memories',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'photo',
+              type: 'image',
+              title: 'Photo',
+              options: {hotspot: true},
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: 'startDate',
       title: 'Start Date & Time',
       type: 'datetime',
@@ -87,15 +130,3 @@ export const event = defineType({
     }),
   ],
 })
-
-
-// <CardEvent
-	// 	key={5}
-	// 	id={5}
-	// 	image={Semicolon}
-	// 	title="The Semicolon Show"
-	// 	text="A problem-solving competition aimed at enhancing problem-solving skills and fostering a competitive spirit."
-	// 	date="Second Semester"
-	// 	location="Online/Offline"
-	// 	className="grid lg:grid-cols-1"
-	// />,
