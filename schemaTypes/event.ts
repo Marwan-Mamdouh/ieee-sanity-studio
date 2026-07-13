@@ -80,6 +80,17 @@ export const event = defineType({
       validation: (Rule) => Rule.min(Rule.valueOfField('startDate')),
     }),
     defineField({
+      name: 'startDateSecondV',
+      title: 'Start Date & Time',
+      type: 'datetime',
+    }),
+    defineField({
+      name: 'endDateSecondV',
+      title: 'End Date & Time',
+      type: 'datetime',
+      validation: (Rule) => Rule.min(Rule.valueOfField('startDateSecondV')),
+    }),
+    defineField({
       name: 'isCancelled',
       title: 'Cancelled',
       type: 'boolean',
