@@ -109,7 +109,7 @@ export const event = defineType({
         list: [
           {title: 'Online', value: 'online'},
           {title: 'In Person', value: 'inPerson'},
-          {title: 'Mixed', value: 'mixed'},
+          {title: 'Hybrid', value: 'hybrid'},
         ],
         layout: 'dropdown',
       },
