@@ -108,7 +108,7 @@ export const event = defineType({
       options: {
         list: [
           {title: 'Online', value: 'online'},
-          {title: 'In Person', value: 'inPerson'},
+          {title: 'Offline', value: 'offline'},
           {title: 'Hybrid', value: 'hybrid'},
         ],
         layout: 'dropdown',
