@@ -6,7 +6,7 @@ export const homePage = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'home images',
+      name: 'home_images',
       title: 'Home Images',
       type: 'array',
       of: [
