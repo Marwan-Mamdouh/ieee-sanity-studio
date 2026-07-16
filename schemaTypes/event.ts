@@ -137,7 +137,6 @@ export const event = defineType({
       name: 'registrationLink',
       title: 'Registration Link',
       type: 'url',
-      validation: (Rule) => Rule.required(),
     }),
   ],
 })
