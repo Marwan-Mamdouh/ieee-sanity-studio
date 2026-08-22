@@ -16,17 +16,17 @@
   ],
   "dependencies": {
     "@sanity/vision": "^5.31.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "sanity": "^5.31.1",
-    "styled-components": "^6.4.2"
+    "styled-components": "^6.5.3"
   },
   "devDependencies": {
     "@sanity/cli": "^7.1.0",
     "@sanity/eslint-config-studio": "^6.0.0",
-    "@types/react": "^19.2.17",
+    "@types/react": "^19.2.18",
     "eslint": "^9.39.5",
-    "prettier": "^3.8",
+    "prettier": "^3.9",
     "typescript": "^6.0"
   },
   "prettier": {
@@ -34,5 +34,16 @@
     "printWidth": 100,
     "semi": false,
     "singleQuote": true
+  },
+  "overrides": {
+    "adm-zip": "^0.6.0",
+    "smol-toml": "^1.6.1",
+    "uuid": "^11.1.1",
+    "@vercel/frameworks": {
+      "js-yaml": "^3.15.1"
+    },
+    "@module-federation/dts-plugin": {
+      "undici": "^7.29.0"
+    }
   }
 }

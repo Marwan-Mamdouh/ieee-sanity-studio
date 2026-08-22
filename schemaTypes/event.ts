@@ -138,5 +138,13 @@ export const event = defineType({
       title: 'Registration Link',
       type: 'url',
     }),
+    defineField({
+      name: 'formSlug',
+      title: 'Form Slug',
+      type: 'string',
+      description:
+        "Optional identifier for the event's registration form, e.g. \"ai-workshop-2026\"",
+      validation: (Rule) => Rule.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {name: 'kebab-case slug'}),
+    }),
   ],
 })
