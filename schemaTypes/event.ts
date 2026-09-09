@@ -146,5 +146,39 @@ export const event = defineType({
         "Optional identifier for the event's registration form, e.g. \"ai-workshop-2026\"",
       validation: (Rule) => Rule.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {name: 'kebab-case slug'}),
     }),
+    defineField({
+      name: 'orderNum',
+      title: 'Order Number',
+      type: 'number',
+      description: 'Unique sort key for website event ordering, e.g. 1, 2, 3...',
+      validation: (Rule) =>
+        Rule.integer()
+          .min(0)
+          .warning('Should be a whole number >= 0')
+          .custom(async (value, context) => {
+            if (value == null) return true
+            const {document, getClient} = context
+            const client = getClient({apiVersion: '2024-01-01'})
+            const id = document?._id?.replace(/^drafts\./, '')
+            const params = {v: value, draft: `drafts.${id}`, pub: id}
+            const count = await client.fetch(
+              'count(*[_type == "event" && orderNum == $v && !(_id in [$draft, $pub])])',
+              params,
+            )
+            return count > 0 ? 'orderNum must be unique — this value is already used' : true
+          }),
+    }),
+  ],
+  orderings: [
+    {
+      title: 'Order Number, Asc',
+      name: 'orderNumAsc',
+      by: [{field: 'orderNum', direction: 'asc'}],
+    },
+    {
+      title: 'Order Number, Desc',
+      name: 'orderNumDesc',
+      by: [{field: 'orderNum', direction: 'desc'}],
+    },
   ],
 })
