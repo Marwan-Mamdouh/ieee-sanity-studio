@@ -127,6 +127,28 @@ export const event = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'venueDetails',
+      title: 'Venue Details',
+      type: 'object',
+      description: 'Physical venue info — shown when Location is Offline or Hybrid',
+      hidden: ({parent}) => parent?.location !== 'offline' && parent?.location !== 'hybrid',
+      fields: [
+        defineField({
+          name: 'mapLink',
+          title: 'Map Link',
+          type: 'url',
+          description: 'Google Maps link, e.g. https://maps.google.com/?q=...',
+        }),
+        defineField({
+          name: 'note',
+          title: 'Venue Note',
+          type: 'string',
+          description: 'Short hint, e.g. Enter from Gate 3, Room B201',
+          validation: (Rule) => Rule.max(255),
+        }),
+      ],
+    }),
+    defineField({
       name: 'coverImage',
       title: 'Cover Image',
       type: 'image',
